@@ -14,7 +14,8 @@ void setup()
 {
   //fullScreen(); //Remember, Display Geometry is Mandatory
   minim = new Minim(this); //loads from data directory, loadFile should also load from project folder, like loadImage()
-  song1 = minim.loadFile(); //able to pass absulute path, file name & extension, and URL
+  song1 = minim.loadFile("MusicDownload/groove.mp3"); //able to pass absulute path, file name & extension, and URL
+  song1.play(); //Parameter is milli-seconds from start of auido file to start of playing
 }//End setup
 //
 void draw() {}//End draw
