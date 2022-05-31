@@ -14,7 +14,7 @@ void setup()
 {
   //fullScreen(); //Remember, Display Geometry is Mandatory
   minim = new Minim(this); //loads from data directory, loadFile should also load from project folder, like loadImage()
-  song1 = minim.loadFile(); //able to pass absulute path, file name, and URL
+  song1 = minim.loadFile(); //able to pass absulute path, file name & extension, and URL
 }//End setup
 //
 void draw() {}//End draw
