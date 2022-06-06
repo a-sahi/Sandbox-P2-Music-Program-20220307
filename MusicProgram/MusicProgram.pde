@@ -25,25 +25,35 @@ void setup()
 }//End setup
 //
 void draw() {
-  if ( song1.isLooping() ) println("There are", song1.loopCount()-1, "loops left.");
+  if ( song1.isLooping() ) println("There are", song1.loopCount(), "loops left.");
   if ( song1.isPlaying() && !song1.isLooping() ) println("Play Once");
   //
   //println("Song Position", song1.position(), "Song Length", song1.length() ); //Values in milliseconds
+  //
+  background (black);
+  rect(width*1/4, height*0, width*1/2, height*1/10);
+  fill(purple); //Ink, hexidecimal copied from Color Selector
+  textAlign (CENTER, CENTER); //Align X&Y, see Processing.org / Reference
+  //Values: [LEFT | CENTER | RIGHT] & [TOP | CENTER | BOTTOM | BASELINE]
+  textFont(titleFont, 30); //Change the number until it fits, largest font size
+  text(songMetaData1.title(), width*1/4, height*0, width*1/2, height*1/10);
+  fill(255); //Reset to white for rest of the program
+  //
 }//End draw
 //
 void keyPressed() 
 {
-  //Only press a number fro this code below
+  //Only press a number for this code below
   if ( key=='1' || key=='9' ) { //Looping Functions
     //Note: "9" is assumed to be massive! "Simulate Infinite"
     if ( key == '1' ) println("Looping 1 time"); //Once
-    if ( key == '9' ) println("Looping 9 times"); //Stimulating Infinity
+    if ( key == '9' ) println("Looping 9 times"); //Simulating Infinity
     String keystr = String.valueOf(key);
     println("Number of Repeats is", keystr);
     int num = int(keystr);
     song1.loop(num);
   }//End LOOP
-  if ( key=='l' || key=='L' ) song1.loop(); //No parameter means "infinite loops"
+  if ( key=='1' || key=='L' ) song1.loop(); //No parameter means "infinite loops"
   //
   if ( key>='2' && key!='9' ) println("I do not loop that much! Try again.");
   //
@@ -59,7 +69,7 @@ void keyPressed()
     } else {
       song1.play(); //Parameter is milli-seconds from start of auido file to start of playing
     }
-}//End PLAY-PAUSE Button
+  }//End PLAY-PAUSE Button
   //
   //Forward and Reverse Button
   //Built-in question: .isPlaying()
@@ -78,10 +88,10 @@ void keyPressed()
    if ( song1.isPlaying() ) {
      song1.pause();
      song1.rewind();
-  } else {
-    song1.rewind();
-  }
-}//End STOP Button
+   } else {
+     song1.rewind();
+   }
+ }//End STOP Button
 
   //
 }//End keyPressed
