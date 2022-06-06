@@ -37,21 +37,28 @@ void keyPressed()
     int num = int(keystr);
     song1.loop(num);
   }//End LOOP
+  if ( key=='l' || key=='L' ) song1.loop(); //No parameter means "infinite loops"
+  //
   if ( key>='2' && key!='9' ) println("I do not loop that much! Try again.");
   //
   //Alternate Play-Pause Button
   if ( key=='p' || key=='P' ) {
     if ( song1.isPlaying() ) {
       song1.pause();
+    } else if ( song1.position() >= song1.length()-song1.length()*1/5 ) { //Special Situation: at the end of the song (built-in stop button)
+      //End of Song Calculation: hardcode 1000 OR use formula to say "listen to 80% of the song"
+      //Alternate formula: song1.length() - song1.position() <= 1000
+      song1.rewind();
+      song1.play();
     } else {
-    song1.play(14000); //Parameter is milli-seconds from start of auido file to start of playing
-  }
+      song1.play(); //Parameter is milli-seconds from start of auido file to start of playing
+    }
 }//End PLAY-PAUSE Button
   //
-  /* Previous Play Button & Loop Button
-   int loopNum = 2; //Local Variables plays once and loops twice
-   if ( key=='l' || key=='L' ) song1.loop(loopNum); //Parameter is number of repeats;
-  */
+  //Forward and Reverse Button
+  //Built-in question: .isPlaying()
+  if ( key=='f' || key=='F' ) song1.skip(1000) ; //skip forward 1 second (1000 millisecond)
+  if ( key=='r' || key=='R' ) song1.skip(-1000) ; //skip backward, or reverse, 1 second (1000 millisecond)
   //
   if ( key=='m' || key=='M' ) { //MUTE Button
     if ( song1.isMuted() ) { 
