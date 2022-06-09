@@ -117,28 +117,23 @@ void keyPressed()
       //Serious Problems, playing multiple songs at the same time
       song[currentSong].pause();
       song[currentSong].rewind();
-      if ( currentSong >= song.length-1 ) { //CATCH ArrayIndexOutOfBoundsException
-        currentSong -= currentSong; //Beginning of Play List
-      } else {
-        currentSong++;
-      }//End of CATCH
+      nextButtonArrayCatch();
       song[currentSong].play();
     } else {
-      song[currentSong].rewind(); //Built-in rewind feature feature so all songs start at ZERO
-      if ( currentSong >= song.length-1 ) { //CATCH ArrayIndexOutOfBoundsException
-        currentSong -= currentSong; //Beginning of Play List
-      } else {
-        currentSong++;
-      }//End of CATCH
-      song[currentSong].play(); 
+      song[currentSong].rewind(); ////Built-in rewind feature feature so all songs start at ZERO
+      nextButtonArrayCatch();
+      song[currentSong].play();
     }
   }//End Next Button
   //
-  if () {}//End Previous Button
+  if ( key=='b' || key=='B' ) {}//End Back Button
+  //An Empty Body will not break our program but you will not have a working bee button
+  //Assignment: create a working bee button
   //
 }//End keyPressed
 //
-void mousePressed() {}//End mousePressed
+void mousePressed() {
+}//End mousePressed
 //
 //End MAIN
 //
